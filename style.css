@@ -1,0 +1,325 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:Arial,sans-serif;
+overflow-x:hidden;
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background-color:#0b1221;
+background-image: url('images/background.jpg');
+background-size:cover;
+background-position:center center;
+background-repeat:no-repeat;
+
+text-align:center;
+}
+
+.container{
+
+padding:20px;
+color:white;
+width:90%;
+max-width:500px;
+z-index:10;
+}
+
+.container{
+	background: rgba(0,0,0,0.25);
+	border-radius:14px;
+	padding:22px;
+	backdrop-filter: blur(6px);
+}
+
+/* effect buttons removed from UI */
+
+/* Overlay elements */
+#rainCanvas{
+	position:fixed;
+	left:0;
+	top:0;
+	width:100vw;
+	height:100vh;
+	pointer-events:none;
+	z-index:5;
+	display:none;
+}
+
+.cloud{
+	position:fixed;
+	top:5vh;
+	width:30vw;
+	height:12vh;
+	background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(240,240,240,0.9));
+	border-radius:50px;
+	filter:blur(6px);
+	opacity:0;
+	z-index:6;
+}
+
+.cloud1{ left:-40vw; }
+.cloud2{ right:-40vw; top:12vh; width:25vw; height:10vh; }
+
+/* Effect states on body */
+body.cloudy .cloud{ opacity:0.9; animation:cloudMove 40s linear infinite; }
+
+@keyframes cloudMove{
+	from{ transform:translateX(0); }
+	to{ transform:translateX(140vw); }
+}
+
+body.rainy #rainCanvas{ display:block; }
+
+/* Rainbow background */
+body.rainbow{
+	background:linear-gradient(45deg,#ff4b91,#ffd700,#32cd32,#00bfff,#9b30ff);
+	animation:rainbowShift 6s linear infinite;
+}
+
+@keyframes rainbowShift{
+	0%{ background-position:0% 50%; }
+	50%{ background-position:100% 50%; }
+	100%{ background-position:0% 50%; }
+}
+
+/* Colorful animated gradient */
+body.colorful{
+	background:linear-gradient(120deg,#ff9a9e,#fecfef,#f6d365,#fda085);
+	animation:colorfulShift 8s ease-in-out infinite;
+}
+
+@keyframes colorfulShift{
+	0%{ filter:hue-rotate(0deg); }
+	50%{ filter:hue-rotate(60deg); }
+	100%{ filter:hue-rotate(0deg); }
+}
+
+/* Moon and stars */
+.moon{
+	position:fixed;
+	right:8vw;
+	top:8vh;
+	width:80px;
+	height:80px;
+	background: radial-gradient(circle at 35% 30%, #fff9d9 0%, #fff1b8 20%, #f0e6c8 40%, rgba(240,230,200,0.0) 60% ), #f7f3d7;
+	border-radius:50%;
+	box-shadow: 0 0 40px rgba(255,240,200,0.25);
+	z-index:6;
+	opacity:0.95;
+}
+
+.stars{ position:fixed; left:0; top:0; width:100vw; height:100vh; pointer-events:none; z-index:5; }
+.star{ position:absolute; background:rgba(255,255,255,0.9); width:2px; height:2px; border-radius:50%; opacity:0.9; }
+
+/* Ensure text elements remain readable */
+.container, .audioControls, .effects{ z-index: 10; }
+
+h1{
+
+margin-bottom:10px;
+
+animation:bounce 2s infinite;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+#typing{
+
+font-size:18px;
+margin:20px 0;
+min-height:70px;
+}
+
+#countdown{
+
+margin-bottom:20px;
+}
+
+.slideshow img{
+
+width:100%;
+max-width:300px;
+height:350px;
+
+object-fit:cover;
+
+border-radius:20px;
+
+box-shadow:0 0 15px rgba(0,0,0,0.3);
+}
+
+button{
+
+margin-top:20px;
+
+padding:15px 30px;
+
+font-size:18px;
+
+border:none;
+border-radius:30px;
+
+cursor:pointer;
+}
+
+#giftMessage{
+
+display:none;
+
+font-size:28px;
+
+margin-top:20px;
+
+animation:zoom 1s;
+}
+
+#letter{
+
+display:none;
+
+background:white;
+
+color:black;
+
+padding:20px;
+
+margin-top:20px;
+
+border-radius:20px;
+}
+
+#fireworks{
+
+display:none;
+
+font-size:40px;
+
+margin-top:20px;
+
+animation:blink 1s infinite;
+}
+
+.hearts{
+
+position:absolute;
+top:0;
+left:0;
+
+width:100%;
+
+font-size:25px;
+
+animation:heartFall 10s linear infinite;
+}
+
+.balloon{
+
+position:absolute;
+
+bottom:-100px;
+
+left:10%;
+
+font-size:50px;
+
+animation:float 8s linear infinite;
+}
+
+.b2{
+
+left:50%;
+
+animation-delay:2s;
+}
+
+.b3{
+
+left:80%;
+
+animation-delay:4s;
+}
+
+.confetti{
+
+position:absolute;
+font-size:25px;
+top:-50px;
+}
+
+@keyframes bounce{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+}
+
+@keyframes zoom{
+
+from{
+transform:scale(0);
+}
+
+to{
+transform:scale(1);
+}
+}
+
+@keyframes blink{
+
+0%,100%{
+opacity:1;
+}
+
+50%{
+opacity:0;
+}
+}
+
+@keyframes float{
+
+from{
+bottom:-100px;
+}
+
+to{
+bottom:120%;
+}
+}
+
+@keyframes heartFall{
+
+from{
+transform:translateY(-100px);
+}
+
+to{
+transform:translateY(100vh);
+}
+}
+
+/* audio controls removed */
+
+/* Image filters per effect */
+.slideshow img.cloudy{ filter:brightness(0.85) contrast(0.95) saturate(0.9); }
+.slideshow img.rainy{ filter:brightness(0.7) contrast(0.9) grayscale(0.05); }
+.slideshow img.rainbow{ filter:sepia(0.1) hue-rotate(30deg) saturate(1.3); }
+.slideshow img.colorful{ filter:contrast(1.05) saturate(1.4) hue-rotate(10deg); }
+
+/* Sparkles */
+.sparkles{ position:fixed; left:0; top:0; width:100vw; height:100vh; pointer-events:none; z-index:7; overflow:hidden; }
+.sparkle{ position:absolute; color:rgba(255,255,255,0.9); font-size:18px; opacity:0; transform:translateY(0); animation:rise 3s linear infinite; }
+@keyframes rise{ 0%{ opacity:0; transform:translateY(20px) scale(0.6);} 10%{ opacity:1;} 100%{ opacity:0; transform:translateY(-200px) scale(1.2);} }
